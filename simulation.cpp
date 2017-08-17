@@ -37,6 +37,7 @@ void set_radius(float r){
 
 long double rv_correction = 0;		//rotational velocity correction based on halo
 bool dark_matter = false;
+//rotational velocity is keplerian. TODO add rotation curve code. 
 void spheriod(particle *center, int count, long double mass, long double radius, long double c, long double x_shift, long double y_shift, long double z_shift, 
 					   long double h, long double f, long double l, long double angle){	//galactic center, particle cound, radius, flattening constant, position vector, rotational vector, angle of rotation
 	for(int i = 0; i < count; i++){
@@ -71,11 +72,7 @@ void spheriod(particle *center, int count, long double mass, long double radius,
 				(long double)(sqrt(pow(x_pos,2) + pow(y_pos,2) + pow(z_pos,2)))
 			));
 		}
-		long double dist = sqrt(pow(x_pos,2) + pow(y_pos,2) + pow(z_pos,2));
-		dist /= radius;
-		long double speed = 0.6*log(2*dist);													//insert rotation curve here
-		velocity->scalar(velocity->m*speed);
-		add_part(mass*speed, x_pos+x_shift, y_pos+y_shift, z_pos+z_shift, velocity->i, velocity->j, velocity->k);
+		add_part(mass, x_pos+x_shift, y_pos+y_shift, z_pos+z_shift, velocity->i, velocity->j, velocity->k);
 		delete velocity;
 		set_color(1,1,1,0.333);
 		set_radius(0.0027);
@@ -84,8 +81,8 @@ void spheriod(particle *center, int count, long double mass, long double radius,
 	}
 }
 
+//test for accuracy by using this function and comparing earth x == 0 at T = 365.25 days
 void solar_system_test(){
-	//test for accuracy by using this function and comparing earth x == 0 at T = 365.25 days
 	set_open_angle(0.5);
 	set_time_step(25000);
 	set_width(10*AU);

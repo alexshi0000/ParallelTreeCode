@@ -9,14 +9,14 @@
 #include "end.h"
 
 long double x_pos=0, y_pos=0, z_pos=0, angle=0, i_r=1.0, j_r=0, k_r=0, zoom=0.13, tran_incr=0;	//translation icrement amount
-int quality=0, steps=0, frame_step=0;
+int quality=0, steps=0, frame_step=0;															//frame step is how many steps are calculated per frame
 bool init=true;
 
 void render_scene(){
 	init = false;
 	//exit
 	if(steps <= 0){
-		end_prog();
+		end_prog();																				//manual garbage collection
 		glutLeaveMainLoop();
 	}
 	else
@@ -41,8 +41,10 @@ void render_scene(){
 		glutSolidSphere(p->radius,quality,quality);
 	    glPopMatrix();
 	}
-	for(int i = 0; i < frame_step; i ++)
+	for(int i = 0; i < frame_step; i ++){
 		build_tree();
+		time_of += time_step;
+	}
 	glutSwapBuffers();
 	glutPostRedisplay();
 }

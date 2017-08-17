@@ -13,9 +13,10 @@ const long double YTM = (1.0/1e+6);
 node **root;
 long vector_count = 0, particle_count = 0, node_count = 0, id_count = 0;
 int cpu_count;
-long double open_angle;
-long double time_step;
-long double s_width;
+long double open_angle = 0;
+long double time_step  = 0;
+long double s_width    = 0;
+long double time_of    = 0;
 std::vector<particle*> universe;
 
 vec::vec(long double i, long double j, long double k){

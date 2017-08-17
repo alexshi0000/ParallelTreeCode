@@ -46,13 +46,14 @@ extern const long double PC;																//parsec
 extern const long double GV;																//gravitational constant
 extern const long double LC;																//speed of light
 extern const long double LY;																//light year
-extern const long double STD;															//seconds to day 
-extern const long double DTY;															//day to year
-extern const long double YTM;															//year to myrs
+extern const long double STD;																//seconds to day 
+extern const long double DTY;																//day to year
+extern const long double YTM;																//year to myrs
 extern const long double PI;																//pi
 extern long double open_angle;
 extern long double time_step;															
 extern long double s_width;
+extern long double time_of;
 extern int cpu_count;
 extern long vector_count, node_count, particle_count, id_count;
 extern node **root;																	//each root for cpu
