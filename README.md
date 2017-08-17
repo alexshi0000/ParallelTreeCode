@@ -1,2 +1,2 @@
 # ParallelTreeCode
-omp treecode parallelization. 
+omp treecode parallelization. still working on it.
