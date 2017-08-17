@@ -1,0 +1,2 @@
+# ParallelTreeCode
+omp treecode parallelization. 
